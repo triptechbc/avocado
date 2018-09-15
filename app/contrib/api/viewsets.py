@@ -1,3 +1,5 @@
+from django.core.exceptions import FieldDoesNotExist
+
 from rest_framework import permissions, viewsets
 
 from .permissions import IsAdminUser, IsInstructorUser
@@ -9,7 +11,10 @@ class HasRoleOrReadOnlyModelViewSet(viewsets.ModelViewSet):
 
 
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        try:
+            serializer.save(created_by=self.request.user)
+        except TypeError:
+            serializer.save()
 
     def get_permissions(self):
         if self.action in self.destructive_actions:
