@@ -8,5 +8,3 @@ class CourseViewSet(AdminOrReadOnlyModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
 
-    def perform_create(self, serializer):
-        self.set_created_by(created_object=serializer.save())
