@@ -1,0 +1,28 @@
+# PyCharm
+.idea
+
+# Python
+*.pyc
+
+# Virtual environment
+/venv/
+
+# Conf
+conf/fab_settings.py
+
+# Static files
+/www/static/
+
+# Node
+node_modules
+
+# Data
+www/data
+
+# Tests
+.cache
+.coverage*
+
+# Settings
+.env
+settings.json
